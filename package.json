@@ -1,0 +1,33 @@
+{
+  "name": "backlogplan-website",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && node scripts/prepare-sites-build.mjs",
+    "preview": "vite preview",
+    "test:sites": "node --test tests/sites-worker.test.mjs",
+    "intro:studio": "remotion studio src/intro/index.jsx --no-open",
+    "intro:render": "remotion render src/intro/index.jsx BacklogPlan-Intro public/intro/backlogplan-intro-v2.mp4 --codec=h264 --crf=20 --concurrency=2 --chrome-mode=chrome-for-testing && remotion render src/intro/index.jsx BacklogPlan-Intro-Mobile public/intro/backlogplan-intro-mobile-v2.mp4 --codec=h264 --crf=20 --concurrency=2 --chrome-mode=chrome-for-testing"
+  },
+  "dependencies": {
+    "@fontsource-variable/fraunces": "^5.3.0",
+    "@fontsource-variable/manrope": "^5.3.0",
+    "@phosphor-icons/react": "^2.1.10",
+    "@remotion/cli": "4.0.534",
+    "@remotion/player": "^4.0.534",
+    "@remotion/transitions": "4.0.534",
+    "@vitejs/plugin-react": "5.0.4",
+    "gsap": "^3.15.0",
+    "lenis": "^1.3.27",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
+    "react-router-dom": "^7.18.4",
+    "remotion": "^4.0.534",
+    "vite": "6.4.2"
+  },
+  "devDependencies": {
+    "simple-icons": "^16.35.0"
+  }
+}

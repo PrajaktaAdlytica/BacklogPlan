@@ -1,0 +1,45 @@
+name: Build Hostinger site
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: hostinger-publish
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - run: npm run test:sites
+      - name: Verify static hosting files
+        run: |
+          test -s dist/client/index.html
+          test -s dist/client/.htaccess
+          test -s dist/client/intro/backlogplan-intro-v2.mp4
+      - name: Publish compiled files to hostinger branch
+        run: |
+          git fetch origin hostinger --depth=1
+          git worktree add --detach ../hostinger-publish FETCH_HEAD
+          rsync -a --delete --exclude='.git' dist/client/ ../hostinger-publish/
+          git -C ../hostinger-publish config user.name 'github-actions[bot]'
+          git -C ../hostinger-publish config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git -C ../hostinger-publish add --all
+          if ! git -C ../hostinger-publish diff --cached --quiet; then
+            git -C ../hostinger-publish commit -m "Build from ${GITHUB_SHA}"
+            git -C ../hostinger-publish push origin HEAD:hostinger
+          fi
+      - uses: actions/upload-artifact@v4
+        with:
+          name: BacklogPlan-Hostinger
+          path: dist/client/
+          include-hidden-files: true
+          retention-days: 14

@@ -12,7 +12,7 @@ export function Button({to,children,secondary=false,light=false,className='',onC
 }
 export function Eyebrow({children}){return <div className="eyebrow"><span>{children}</span><i/></div>}
 export function DemoLabel(){return <span className="demo-label">Concept preview <b>·</b> Demo / simulated data</span>}
-export function Logo({inverse=false}){return <Link to="/" className={`logo ${inverse?'inverse':''}`} aria-label="BacklogPlan home"><img src="/assets/brand-mark.webp" alt="" width="40" height="40"/><span>BacklogPlan</span></Link>}
+export function Logo({inverse=false}){return <Link to="/" className={`logo ${inverse?'inverse':''}`} aria-label="BacklogPlan home"><img className="brand-lockup" src={`/brand/planners-tool/logo-horizontal-${inverse?'reversed':'color'}.svg`} alt="" width="843" height="256"/></Link>}
 
 export function Header(){
  const [menu,setMenu]=useState(null),[mobile,setMobile]=useState(false);const ref=useRef(null),loc=useLocation();

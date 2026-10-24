@@ -166,3 +166,8 @@ body{background:#e9e1d4}
 @media(max-width:700px){.intro-film{height:100svh;aspect-ratio:auto;min-height:0;max-height:none}}
 .motion-reduced .intro-film,.motion-reduced .intro-visual{transition:none!important;transform:none!important}
 @media(prefers-reduced-motion:reduce){.intro-film,.intro-visual{transition:none!important;transform:none!important}}
+
+/* Approved Planner’s Tool SVG lockup; retain the authored proportions. */
+.logo .brand-lockup{width:204px;height:auto;aspect-ratio:843/256;object-fit:contain}
+.footer .logo .brand-lockup{width:230px}
+@media(max-width:700px){.logo .brand-lockup{width:180px}.footer .logo .brand-lockup{width:220px}}

@@ -47,3 +47,6 @@ The user explicitly requests automatic smooth progression when the intro ends, n
 
 ## Intro layout correction — latest direction
 The user rejected the strip of video remaining above the navbar during the scroll transition and wants navigation to remain available after the hero. Replace the scrolling intro section with a dismissible fullscreen film layer that fades out as one frame. Keep the header at the application root, sticky across the full page, hidden and inert only while the intro is active. The intro must leave no document-height spacer or video strip. Preserve automatic completion, Skip/Pause, Escape, scroll dismissal, responsive video, and reduced-motion fallback. This supersedes the earlier in-flow hero-arrival header arrangement.
+
+## Logo applied — 25 October 2026
+The user confirmed the new logo should be on the website. Use the finished Planner’s Tool spanner-and-work-order SVG lockup from the brand kit: color in the header, reversed in the dark footer, matching favicons under /brand/planners-tool/. This supersedes earlier instructions to leave the old bracket logo unchanged.
